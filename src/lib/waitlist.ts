@@ -8,7 +8,11 @@ export interface WaitlistEntry {
   ip?: string;
 }
 
-const DATA_FILE = path.join(process.cwd(), "data", "waitlist.json");
+// On Vercel, process.cwd() is read-only — use /tmp which is writable.
+// Locally, /tmp also works fine on Mac/Linux; on Windows dev it falls back to data/.
+const DATA_FILE = process.env.VERCEL
+  ? "/tmp/waitlist.json"
+  : path.join(process.cwd(), "data", "waitlist.json");
 
 function ensureFile() {
   const dir = path.dirname(DATA_FILE);
@@ -25,7 +29,10 @@ export function readWaitlist(): WaitlistEntry[] {
   }
 }
 
-export function addToWaitlist(email: string, ip?: string): { ok: boolean; duplicate: boolean } {
+export function addToWaitlist(
+  email: string,
+  ip?: string
+): { ok: boolean; duplicate: boolean } {
   const list = readWaitlist();
   const normalized = email.trim().toLowerCase();
   if (list.some((e) => e.email.toLowerCase() === normalized)) {

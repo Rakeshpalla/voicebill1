@@ -5,6 +5,8 @@ import ProcessSection from "@/components/ProcessSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import FounderSection from "@/components/FounderSection";
 import FooterSection from "@/components/FooterSection";
+import ROICalculator from "@/components/growth/ROICalculator";
+import InvoiceTemplateLead from "@/components/growth/InvoiceTemplateLead";
 
 export default function Home() {
   return (
@@ -19,12 +21,20 @@ export default function Home() {
         <ProblemSection />
       </div>
 
+      <div id="calculator">
+        <ROICalculator />
+      </div>
+
       <div id="process">
         <ProcessSection />
       </div>
 
       <div id="social-proof">
         <SocialProofSection />
+      </div>
+
+      <div id="templates">
+        <InvoiceTemplateLead />
       </div>
 
       <div id="waitlist">

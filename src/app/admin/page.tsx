@@ -154,7 +154,7 @@ export default function AdminPage() {
               </table>
             </div>
             <div className="px-6 py-4 border-t border-slate-100 text-slate-400 text-xs">
-              Data stored in <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-600">data/waitlist.json</code> · Refresh the page to see new signups
+              Data stored in Resend Contacts · Refresh the page to see new signups
             </div>
           </div>
         )}
