@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
 import PostHogProvider from "@/components/growth/PostHogProvider";
+import StructuredData from "./structured-data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,52 +23,67 @@ const siteUrl = "https://voicebill1.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "VoiceBill — Voice-to-Invoice for Trade Pros | Automated Contractor Billing",
+    default: "VoiceBill — Voice-to-Invoice for Plumbers, HVAC & Electricians | Get Paid Same Day",
     template: "%s | VoiceBill",
   },
   description:
-    "Zero-entry invoicing for plumbers, HVAC techs & electricians. Turn a 30-second voice note into a professional invoice with Stripe payment link. Automated contractor billing worldwide.",
+    "Stop typing invoices. Talk for 30 seconds — VoiceBill AI creates a professional invoice + Stripe payment link instantly. Used by 450+ plumbers, HVAC techs & electricians across 12 countries. Join the waitlist free.",
   keywords: [
-    "voice to invoice for trade pros",
-    "automated contractor billing",
-    "zero entry invoicing",
-    "voice invoicing for plumbers",
-    "hands-free billing for HVAC",
-    "electrical contractor invoice automation",
-    "field service invoice app",
-    "contractor billing software",
-    "invoice generator for tradespeople",
-    "global voice invoicing app",
+    // High-intent buying keywords
+    "best invoice app for plumbers",
+    "invoice app for contractors",
+    "voice to invoice app",
+    "contractor invoice software",
+    "invoice app for tradespeople",
+    "automated invoicing for electricians",
+    "HVAC invoice software",
+    "plumber invoice app",
+    "field service invoicing app",
+    "get paid faster as a contractor",
+    "same day payment for contractors",
+    "AI invoice generator for tradespeople",
+    // Long-tail buying intent
+    "how to invoice faster as a plumber",
+    "best billing app for HVAC technicians",
+    "electrician billing software with payment link",
+    "voice invoice generator for contractors",
+    "invoice from phone for tradespeople",
+    "no typing invoice app for field workers",
+    "Stripe invoicing for contractors",
+    "contractor invoice app with payment",
+    // Geo-targeted
     "plumber invoice app UK",
     "HVAC invoice app USA",
     "electrician billing software Australia",
+    "contractor billing app Canada",
     "trade pro invoicing India",
+    "invoice app for tradespeople UAE",
   ],
-  authors: [{ name: "VoiceBill Invoicing" }],
+  authors: [{ name: "VoiceBill" }],
   creator: "VoiceBill",
   publisher: "VoiceBill",
   openGraph: {
-    title: "VoiceBill — Just Talk. We'll Invoice. | Voice-to-Invoice for Trade Pros",
+    title: "VoiceBill — Talk for 30 Seconds. Get Paid Same Day.",
     description:
-      "Automated contractor billing in 30 seconds. Turn a voice note into a professional invoice + Stripe pay link. Built for plumbers, HVAC techs & electricians worldwide.",
+      "450+ trade pros use VoiceBill to turn a voice note into a professional invoice + Stripe pay link in seconds. No typing. No laptop. No chasing payments. Join the waitlist free.",
     type: "website",
     url: siteUrl,
     locale: "en_US",
-    siteName: "VoiceBill — Global Voice Invoicing",
+    siteName: "VoiceBill",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "VoiceBill — Global Voice Invoicing for Trade Professionals",
+        alt: "VoiceBill — Voice-to-Invoice app for plumbers, HVAC techs and electricians",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VoiceBill — Zero-Entry Invoicing for Trade Pros",
+    title: "VoiceBill — Stop Typing Invoices. Just Talk.",
     description:
-      "Stop typing invoices. Just talk — AI generates your invoice + Stripe pay link in 30 seconds. Automated contractor billing worldwide.",
+      "Turn a 30-second voice note into a professional invoice + Stripe pay link. Built for plumbers, HVAC techs & electricians. 450+ pros across 12 countries. Join free.",
     images: ["/og-image.png"],
   },
   manifest: "/manifest.json",
@@ -79,7 +95,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   alternates: {
     canonical: siteUrl,
@@ -93,6 +115,10 @@ export const metadata: Metadata = {
       "x-default": `${siteUrl}`,
     },
   },
+  verification: {
+    google: "a94f32d41bf64ec6",
+  },
+  category: "business",
 };
 
 export const viewport: Viewport = {
@@ -130,6 +156,8 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="en-IN" href={siteUrl} />
         <link rel="alternate" hrefLang="en-AE" href={siteUrl} />
         <link rel="alternate" hrefLang="x-default" href={siteUrl} />
+
+        <StructuredData />
       </head>
       <body className="min-h-screen bg-white text-slate-900">
         {children}
