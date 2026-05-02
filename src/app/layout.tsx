@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
 import PostHogProvider from "@/components/growth/PostHogProvider";
@@ -162,11 +163,11 @@ export default function RootLayout({
       <body className="min-h-screen bg-white text-slate-900">
         {children}
         <Analytics />
-        {/* PostHog — useSearchParams requires Suspense boundary */}
         <Suspense fallback={null}>
           <PostHogProvider />
         </Suspense>
       </body>
+      <GoogleAnalytics gaId="G-PM6GFYBY3N" />
     </html>
   );
 }
