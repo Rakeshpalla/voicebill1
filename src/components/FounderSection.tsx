@@ -116,6 +116,7 @@ export default function FounderSection() {
 
       {/* Final CTA Section */}
       <section
+        id="waitlist"
         className="py-20 sm:py-28 px-5 sm:px-8"
         style={{ background: "linear-gradient(145deg, #0d2238 0%, #1a3a5c 60%, #1e4976 100%)" }}
         aria-labelledby="final-cta-heading"

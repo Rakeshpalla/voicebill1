@@ -37,7 +37,7 @@ export default function Home() {
         <InvoiceTemplateLead />
       </div>
 
-      <div id="waitlist">
+      <div>
         <FounderSection />
       </div>
 
